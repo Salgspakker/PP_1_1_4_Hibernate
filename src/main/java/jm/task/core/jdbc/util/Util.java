@@ -11,18 +11,12 @@ public class Util {
     private final static String PASSWORD = "root";
 
     private static Connection connection;
-    public Util() {
+    public static Connection getConnection() {
         try {
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Util.connection = connection;
-            if (!connection.isClosed()) {
-                System.out.println("We are connected!");
-            }
+            Util.connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (SQLException e) {
             System.out.println("there is no connection... Exception!");
         }
-    }
-    public static Connection getConnection() {
         return connection;
     }
 }
