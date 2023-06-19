@@ -83,7 +83,7 @@ public class UserDaoHibernateImpl implements UserDao {
     public void cleanUsersTable() {
         try (Session session = sessionFactory.getCurrentSession()) {
             session.beginTransaction();
-            String query  = "DROP TABLE IF EXISTS users";
+            String query  = "TRUNCATE `mydbtest`.`users`";
             session.createSQLQuery(query).executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
